@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matthews Overton — Birmingham Economic Development</title>
+  <meta name="description" content="Matthews Overton is Matthews Development's Birmingham office — a boutique, locally-rooted economic development practice led by principal Grant Brigham.">
+
+  <style>
+    /* ─── FONTS ─── */
+    @font-face {
+      font-family: 'SuisseIntl';
+      src: url('./SuisseIntl-Regular.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'GTCanon';
+      src: url('./GT-Canon-S-Narrow-Regular.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* ─── RESET ─── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: 'SuisseIntl', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.5;
+      color: #000;
+      background: #fff;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    /* ─── UTILITIES ─── */
+    .wrap {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding-left: clamp(24px, 5vw, 64px);
+      padding-right: clamp(24px, 5vw, 64px);
+    }
+
+    /* ─── NAV ─── */
+    .site-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 24px clamp(24px, 5vw, 64px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.5s ease, color 0.5s ease;
+    }
+
+    .site-nav.light {
+      color: #fff;
+    }
+
+    .site-nav.dark {
+      color: #000;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .nav-logo {
+      font-family: 'GTCanon', serif;
+      font-size: 22px;
+      letter-spacing: -0.01em;
+      line-height: 1;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    .nav-links a {
+      position: relative;
+      opacity: 0.85;
+      transition: opacity 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0;
+      height: 1px;
+      background: currentColor;
+      transition: width 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-connect {
+      font-size: 14px;
+      opacity: 0.85;
+      transition: opacity 0.3s ease;
+    }
+
+    .nav-connect:hover {
+      opacity: 1;
+    }
+
+    .nav-logo-img-link {
+      display: block;
+      transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .nav-logo-img-link:hover {
+      opacity: 0.7;
+      transform: scale(1.05);
+    }
+
+    .nav-logo-img {
+      height: 52px;
+      width: auto;
+      display: block;
+      transition: filter 0.5s ease;
+    }
+
+    .site-nav.light .nav-logo-img {
+      filter: brightness(0) invert(1);
+    }
+
+    .site-nav.dark .nav-logo-img {
+      filter: none;
+    }
+
+    .nav-mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: currentColor;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 600px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      color: #fff;
+    }
+
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .hero:hover .hero-video {
+      transform: scale(1.03);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.35);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding-bottom: clamp(40px, 6vw, 80px);
+    }
+
+    .hero-label {
+      font-family: 'SuisseIntl', sans-serif;
+      font-size: 14px;
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+
+    .hero-label::after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 1px;
+      background: currentColor;
+      margin-top: 4px;
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: drawLine 1s ease 0.5s forwards;
+    }
+
+    @keyframes drawLine {
+      to { transform: scaleX(1); }
+    }
+
+    .hero h1 {
+      font-family: 'GTCanon', serif;
+      font-weight: 400;
+      font-size: clamp(48px, 9vw, 120px);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      max-width: 14ch;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+    }
+
+    /* ─── INTRO ─── */
+    .intro {
+      padding: clamp(80px, 12vw, 160px) 0;
+      border-bottom: 1px solid #000;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: clamp(40px, 6vw, 100px);
+    }
+
+    .intro-label {
+      font-family: 'SuisseIntl', sans-serif;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .intro-label span {
+      display: block;
+      opacity: 0.6;
+    }
+
+    .intro-body {
+      font-family: 'GTCanon', serif;
+      font-weight: 400;
+      font-size: clamp(24px, 3.2vw, 42px);
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      max-width: 900px;
+    }
+
+    .intro-body a {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-decoration-thickness: 1px;
+      transition: opacity 0.3s ease, text-decoration-color 0.3s ease;
+      text-decoration-color: rgba(0,0,0,0.4);
+    }
+
+    .intro-body a:hover {
+      opacity: 0.6;
+      text-decoration-color: rgba(0,0,0,0.2);
+    }
+
+    /* ─── STAGGERED CHILD REVEALS ─── */
+    .stagger-children > * {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .stagger-children.is-visible > *:nth-child(1) { transition-delay: 0.05s; }
+    .stagger-children.is-visible > *:nth-child(2) { transition-delay: 0.12s; }
+    .stagger-children.is-visible > *:nth-child(3) { transition-delay: 0.19s; }
+    .stagger-children.is-visible > *:nth-child(4) { transition-delay: 0.26s; }
+    .stagger-children.is-visible > *:nth-child(5) { transition-delay: 0.33s; }
+    .stagger-children.is-visible > *:nth-child(6) { transition-delay: 0.40s; }
+    .stagger-children.is-visible > *:nth-child(7) { transition-delay: 0.47s; }
+    .stagger-children.is-visible > *:nth-child(8) { transition-delay: 0.54s; }
+
+    .stagger-children.is-visible > * {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── SECTION HEADER RULE DRAW ─── */
+    .section-header {
+      padding-top: clamp(60px, 8vw, 120px);
+      padding-bottom: clamp(40px, 5vw, 80px);
+      border-bottom: 1px solid #000;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: #000;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .section-header.reveal.is-visible::after {
+      transform: scaleX(1);
+    }
+
+    .section-header h2 {
+      font-family: 'GTCanon', serif;
+      font-weight: 400;
+      font-size: clamp(36px, 5vw, 64px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+
+    .section-header h2 em {
+      font-style: italic;
+      opacity: 0.5;
+      transition: opacity 0.6s ease;
+    }
+
+    .section-header:hover h2 em {
+      opacity: 0.3;
+    }
+
+    /* ─── SCALE ─── */
+    .scale-section {
+      padding-bottom: clamp(60px, 8vw, 120px);
+    }
+
+    .scale-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid #000;
+    }
+
+    .scale-item {
+      padding: clamp(40px, 5vw, 64px) clamp(24px, 3vw, 40px);
+      border-right: 1px solid rgba(0,0,0,0.15);
+      transition: background 0.5s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+      cursor: default;
+    }
+
+    .scale-item:hover {
+      background: rgba(0,0,0,0.02);
+      transform: translateY(-4px);
+    }
+
+    .scale-item:last-child {
+      border-right: none;
+    }
+
+    .scale-num {
+      font-family: 'GTCanon', serif;
+      font-weight: 400;
+      font-size: clamp(56px, 8vw, 110px);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .scale-item:hover .scale-num {
+      transform: scale(1.02);
+    }
+
+    .scale-num .unit {
+      font-style: italic;
+      font-size: 0.45em;
+      vertical-align: super;
+      margin-left: 2px;
+    }
+
+    .scale-rule {
+      width: 32px;
+      height: 1px;
+      background: #000;
+      margin: 24px 0 16px;
+      opacity: 0.3;
+      transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+    }
+
+    .scale-item:hover .scale-rule {
+      width: 48px;
+      opacity: 0.6;
+    }
+
+    .scale-label {
+      font-family: 'SuisseIntl', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .scale-desc {
+      font-family: 'GTCanon', serif;
+      font-style: italic;
+      font-size: 15px;
+      opacity: 0.5;
+      line-height: 1.4;
+      max-width: 260px;
+    }
+
+    .scale-footnote {
+      margin-top: clamp(40px, 5vw, 72px);
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: clamp(40px, 6vw, 100px);
+    }
+
+    .scale-footnote-label {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.5;
+      padding-top: 8px;
+      border-top: 1px solid rgba(0,0,0,0.2);
+    }
+
+    .scale-footnote p {
+      font-family: 'GTCanon', serif;
+      font-size: clamp(18px, 1.8vw, 24px);
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+      max-width: 700px;
+    }
+
+    .scale-footnote p em {
+      font-style: italic;
+    }
+
+    .scale-footnote-link {
+      margin-top: clamp(40px, 5vw, 64px);
+    }
+
+    .scale-footnote-link a {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 24px 32px;
+      border: 1px solid #000;
+      transition: background 0.4s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scale-footnote-link a::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: #000;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+      z-index: 0;
+    }
+
+    .scale-footnote-link a:hover::before {
+      transform: scaleX(1);
+    }
+
+    .scale-footnote-link a:hover {
+      transform: translateX(4px);
+    }
+
+    .scale-footnote-link a:hover .link-label,
+    .scale-footnote-link a:hover .link-title,
+    .scale-footnote-link a:hover .link-arrow {
+      color: #fff;
+    }
+
+    .scale-footnote-link a:hover .link-arrow {
+      transform: translateX(6px);
+    }
+
+    .link-label {
+      font-family: 'SuisseIntl', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.5);
+      position: relative;
+      z-index: 1;
+      transition: color 0.4s ease;
+    }
+
+    .link-title {
+      font-family: 'GTCanon', serif;
+      font-size: clamp(22px, 2.5vw, 32px);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: #000;
+      position: relative;
+      z-index: 1;
+      transition: color 0.4s ease;
+    }
+
+    .link-arrow {
+      font-family: 'SuisseIntl', sans-serif;
+      font-size: 24px;
+      line-height: 1;
+      color: #000;
+      position: relative;
+      z-index: 1;
+      transition: color 0.4s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+      margin-top: 4px;
+    }
+
+    /* ─── FOCUS ─── */
+    .focus-section {
+      padding-bottom: clamp(60px, 8vw, 120px);
+    }
+
+    .focus-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid #000;
+    }
+
+    .focus-item {
+      padding: 36px 32px 40px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.12);
+      border-right: 1px solid rgba(0,0,0,0.12);
+      transition: background 0.5s ease, padding-left 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+      cursor: default;
+    }
+
+    .focus-item:hover {
+      background: rgba(0,0,0,0.02);
+      padding-left: 12px;
+    }
+
+    .focus-item:nth-child(3n) {
+      border-right: none;
+      padding-right: 0;
+    }
+
+    .focus-item:nth-child(3n):hover {
+      padding-left: 12px;
+    }
+
+    .focus-num {
+      font-family: 'GTCanon', serif;
+      font-style: italic;
+      font-size: 14px;
+      opacity: 0.35;
+      margin-bottom: 16px;
+      transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .focus-item:hover .focus-num {
+      opacity: 0.6;
+      transform: translateX(4px);
+    }
+
+    .focus-item h3 {
+      font-family: 'GTCanon', serif;
+      font-weight: 400;
+      font-size: clamp(20px, 2vw, 28px);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 12px;
+      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .focus-item:hover h3 {
+      transform: translateX(4px);
+    }
+
+    .focus-item p {
+      font-family: 'SuisseIntl', sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      opacity: 0.6;
+      max-width: 320px;
+      transition: opacity 0.3s ease;
+    }
+
+    .focus-item:hover p {
+      opacity: 0.85;
+    }
+
+    /* ─── APPROACH ─── */
+    .approach-section {
+      padding-bottom: clamp(60px, 8vw, 120px);
+    }
+
+    .approach-list {
+      list-style: none;
+      border-top: 1px solid #000;
+    }
+
+    .approach-list li {
+      display: grid;
+      grid-template-columns: 80px 1fr 1.3fr;
+      gap: clamp(24px, 4vw, 56px);
+      padding: 32px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.12);
+      align-items: baseline;
+      transition: background 0.5s ease, padding-left 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+      cursor: default;
+    }
+
+    .approach-list li:hover {
+      background: rgba(0,0,0,0.02);
+      padding-left: 16px;
+    }
+
+    .approach-list li::before {
+      content: attr(data-num);
+      font-family: 'GTCanon', serif;
+      font-style: italic;
+      font-size: 14px;
+      opacity: 0.35;
+      transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .approach-list li:hover::before {
+      opacity: 0.6;
+      transform: translateX(4px);
+    }
+
+    .approach-list h4 {
+      font-family: 'GTCanon', serif;
+      font-weight: 400;
+      font-size: clamp(20px, 2vw, 28px);
+      letter-spacing: -0.01em;
+      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .approach-list li:hover h4 {
+      transform: translateX(4px);
+    }
+
+    .approach-list p {
+      font-family: 'SuisseIntl', sans-serif;
+      font-size: 15px;
+      line-height: 1.5;
+      opacity: 0.6;
+      max-width: 480px;
+      transition: opacity 0.3s ease;
+    }
+
+    .approach-list li:hover p {
+      opacity: 0.85;
+    }
+
+    /* ─── PRINCIPAL ─── */
+    .principal-section {
+      padding-bottom: clamp(60px, 8vw, 120px);
+    }
+
+    .principal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: clamp(40px, 6vw, 100px);
+      align-items: start;
+    }
+
+    .principal-photo {
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      background: #f5f5f5;
+      cursor: pointer;
+    }
+
+    .principal-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), filter 0.6s ease;
+      filter: grayscale(0%);
+    }
+
+    .principal-photo:hover img {
+      transform: scale(1.05);
+      filter: grayscale(20%);
+    }
+
+    .principal-photo-cap {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 12px;
+      font-size: 12px;
+      opacity: 0.5;
+    }
+
+    .principal-body h3 {
+      font-family: 'GTCanon', serif;
+      font-weight: 400;
+      font-size: clamp(36px, 5vw, 64px);
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .principal-body h3 em {
+      font-style: italic;
+    }
+
+    .principal-role {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.5;
+      margin-bottom: 32px;
+    }
+
+    .principal-body p {
+      font-family: 'GTCanon', serif;
+      font-size: clamp(17px, 1.4vw, 20px);
+      line-height: 1.4;
+      max-width: 520px;
+    }
+
+    .principal-body p + p {
+      margin-top: 1em;
+    }
+
+    .principal-meta {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px 32px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(0,0,0,0.15);
+    }
+
+    .meta-item {
+      transition: background 0.4s ease, padding-left 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+      padding: 8px 0;
+      cursor: default;
+    }
+
+    .meta-item:hover {
+      background: rgba(0,0,0,0.02);
+      padding-left: 8px;
+    }
+
+    .meta-item .k {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.5;
+      margin-bottom: 6px;
+      transition: opacity 0.3s ease;
+    }
+
+    .meta-item:hover .k {
+      opacity: 0.8;
+    }
+
+    .meta-item .v {
+      font-family: 'GTCanon', serif;
+      font-size: 16px;
+      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .meta-item:hover .v {
+      transform: translateX(4px);
+    }
+
+    .meta-item .v a {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      transition: opacity 0.3s ease;
+    }
+
+    .meta-item .v a:hover {
+      opacity: 0.5;
+    }
+
+    /* ─── CONTACT ─── */
+    .contact-section {
+      padding-bottom: clamp(60px, 8vw, 100px);
+      border-bottom: 1px solid #000;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: clamp(40px, 6vw, 100px);
+    }
+
+    .contact-label {
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .contact-label span {
+      display: block;
+      opacity: 0.6;
+    }
+
+    .contact-body {
+      font-family: 'GTCanon', serif;
+      font-size: clamp(24px, 3.2vw, 42px);
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      max-width: 800px;
+    }
+
+    .contact-email {
+      margin-top: 48px;
+    }
+
+    .contact-email a {
+      font-family: 'GTCanon', serif;
+      font-size: clamp(24px, 3vw, 40px);
+      text-decoration: underline;
+      text-underline-offset: 6px;
+      text-decoration-thickness: 1px;
+      transition: opacity 0.3s ease, letter-spacing 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+      display: inline-block;
+    }
+
+    .contact-email a:hover {
+      opacity: 0.5;
+      letter-spacing: 0.02em;
+    }
+
+    .contact-links {
+      margin-top: 64px;
+      display: grid;
+      gap: 0;
+    }
+
+    .contact-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 24px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.12);
+      transition: background 0.4s ease, padding-left 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+      cursor: default;
+    }
+
+    .contact-row:hover {
+      background: rgba(0,0,0,0.02);
+      padding-left: 8px;
+    }
+
+    .contact-row .k {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.5;
+      padding-top: 4px;
+      transition: opacity 0.3s ease;
+    }
+
+    .contact-row:hover .k {
+      opacity: 0.8;
+    }
+
+    .contact-row .v {
+      font-family: 'GTCanon', serif;
+      font-size: 18px;
+    }
+
+    .contact-row .v a {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      transition: opacity 0.3s ease;
+    }
+
+    .contact-row .v a:hover {
+      opacity: 0.5;
+    }
+
+    /* ─── FOOTER ─── */
+    .site-footer {
+      background: #000;
+      color: #fff;
+      padding: 48px clamp(24px, 5vw, 64px) 32px;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-bottom: 80px;
+    }
+
+    .footer-logo {
+      font-family: 'GTCanon', serif;
+      font-size: 22px;
+      letter-spacing: -0.01em;
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: 32px;
+      font-size: 14px;
+    }
+
+    .footer-nav a {
+      opacity: 0.7;
+      position: relative;
+      transition: opacity 0.3s ease;
+    }
+
+    .footer-nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0;
+      height: 1px;
+      background: currentColor;
+      transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .footer-nav a:hover {
+      opacity: 1;
+    }
+
+    .footer-nav a:hover::after {
+      width: 100%;
+    }
+
+    .footer-copy {
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.5;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.15);
+    }
+
+    /* ─── ANIMATIONS ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.18s; }
+    .reveal-delay-3 { transition-delay: 0.28s; }
+    .reveal-delay-4 { transition-delay: 0.38s; }
+    .reveal-delay-5 { transition-delay: 0.48s; }
+
+    /* ─── HERO ENTRANCE ─── */
+    .hero-label, .hero h1, .hero .hero-lede {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    .hero-label {
+      animation: heroIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+    }
+
+    .hero h1 {
+      animation: heroIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.55s forwards;
+    }
+
+    .hero .hero-lede {
+      animation: heroIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.8s forwards;
+    }
+
+    @keyframes heroIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+      }
+
+      .nav-mobile-toggle {
+        display: block;
+      }
+
+      .intro-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .scale-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .scale-item {
+        border-right: none;
+        border-bottom: 1px solid rgba(0,0,0,0.12);
+        padding-right: 0;
+      }
+
+      .scale-item:last-child {
+        border-bottom: none;
+      }
+
+      .scale-footnote {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .focus-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .focus-item {
+        border-right: none;
+        padding-right: 0;
+      }
+
+      .approach-list li {
+        grid-template-columns: 60px 1fr;
+      }
+
+      .approach-list p {
+        grid-column: 1 / -1;
+        padding-left: 60px;
+      }
+
+      .principal-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-top {
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .footer-nav {
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .principal-meta {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <header class="site-nav light" id="nav">
+    <a href="#top" class="nav-logo-img-link"><img src="./logo.png" alt="Matthews Overton" class="nav-logo-img"></a>
+    <nav class="nav-links">
+      <a href="#practice">Practice</a>
+      <a href="#scale">Scale</a>
+      <a href="#focus">Focus</a>
+      <a href="#approach">Approach</a>
+      <a href="#principal">Principal</a>
+    </nav>
+    <a href="#contact" class="nav-connect">Contact</a>
+    <button class="nav-mobile-toggle" aria-label="Menu">☰</button>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <video class="hero-video" autoplay muted loop playsinline preload="auto">
+      <source src="./hero_video.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="wrap hero-content">
+      <div class="hero-label">Matthews Overton</div>
+      <h1>
+        Patient capital for<br>
+        Birmingham&rsquo;s<br>
+        <em>next chapter.</em>
+      </h1>
+      <p class="hero-lede" style="margin-top: 32px; max-width: 520px; font-size: 15px; line-height: 1.5; opacity: 0.7;">
+        Matthews Overton is Matthews Development&rsquo;s Birmingham office — a boutique, locally-rooted economic development practice.
+      </p>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="intro" id="practice">
+    <div class="wrap intro-grid">
+      <div class="intro-label reveal">
+        Introduction<br>
+        <span>What is Matthews Overton?</span>
+      </div>
+      <div class="intro-body reveal reveal-delay-1">
+        Matthews Overton is the Birmingham office of Matthews Development — a boutique, locally-rooted economic development practice working across the city and the broader Magic City region. We partner with City Hall, county leadership, foundations, anchor institutions, and neighborhood operators to design strategies that move capital into the corridors and communities most often overlooked by it. We are deliberately small, deliberately local, and deliberately patient — and deliberately <em>backed</em>.
+      </div>
+    </div>
+  </section>
+
+  <!-- SCALE -->
+  <section class="scale-section" id="scale">
+    <div class="wrap">
+      <div class="section-header reveal">
+        <h2>Boutique by design. <em>Backed by depth.</em></h2>
+      </div>
+
+      <div class="scale-grid reveal stagger-children">
+        <div class="scale-item">
+          <div class="scale-num">$15<span class="unit">B</span></div>
+          <div class="scale-rule"></div>
+          <div class="scale-label">Completed Projects</div>
+          <div class="scale-desc">Built and delivered across the Matthews Development platform.</div>
+        </div>
+        <div class="scale-item">
+          <div class="scale-num">$10<span class="unit">B</span></div>
+          <div class="scale-rule"></div>
+          <div class="scale-label">Active Pipeline</div>
+          <div class="scale-desc">Currently in development across asset classes and markets.</div>
+        </div>
+        <div class="scale-item">
+          <div class="scale-num">4</div>
+          <div class="scale-rule"></div>
+          <div class="scale-label">Continents</div>
+          <div class="scale-desc">A track record that crosses geographies, cycles, and product types.</div>
+        </div>
+      </div>
+
+      <div class="scale-footnote reveal">
+        <div class="scale-footnote-label">Why it matters</div>
+        <p>
+          Every Matthews Overton engagement is small, hands-on, and locally accountable. Every engagement also sits inside a developer with <em>$15 billion delivered, $10 billion underway,</em> and four continents of building experience. Boutique on the front; depth where it counts.
+        </p>
+        <p class="scale-footnote-link">
+          <a href="https://www.matthewsdev.com/projects" target="_blank" rel="noopener">
+            <span class="link-label">See the work</span>
+            <span class="link-title">View Matthews Projects</span>
+            <span class="link-arrow">→</span>
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOCUS -->
+  <section class="focus-section" id="focus">
+    <div class="wrap">
+      <div class="section-header reveal">
+        <h2>Where we put <em>the work.</em></h2>
+      </div>
+
+      <div class="focus-grid reveal stagger-children">
+        <div class="focus-item">
+          <div class="focus-num">i.</div>
+          <h3>Place-Based Investment</h3>
+          <p>Capital deployment tied to specific places — Birmingham main streets, neighborhood corridors, and historic districts that need a thoughtful operator.</p>
+        </div>
+        <div class="focus-item">
+          <div class="focus-num">ii.</div>
+          <h3>Public–Private Strategy</h3>
+          <p>Structuring partnerships between developers, the City of Birmingham, Jefferson County, and institutional partners so incentives and outcomes align.</p>
+        </div>
+        <div class="focus-item">
+          <div class="focus-num">iii.</div>
+          <h3>Community & Civic Capital</h3>
+          <p>Working alongside Birmingham foundations, CDFIs, and neighborhood leaders to build small-business ecosystems and shared assets.</p>
+        </div>
+        <div class="focus-item">
+          <div class="focus-num">iv.</div>
+          <h3>Feasibility & Diligence</h3>
+          <p>Honest, early-stage assessments — market, financial, and political — for Birmingham projects where the easy answer and the right answer rarely match.</p>
+        </div>
+        <div class="focus-item">
+          <div class="focus-num">v.</div>
+          <h3>Mission-Aligned Real Estate</h3>
+          <p>Development of housing, workspace, and gathering places that perform financially while serving a clearly-articulated public purpose.</p>
+        </div>
+        <div class="focus-item">
+          <div class="focus-num">vi.</div>
+          <h3>Advisory & Board Service</h3>
+          <p>Long-term advisory engagements with civic institutions, family offices, and operating companies whose work intersects with Birmingham&rsquo;s future.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section class="approach-section" id="approach">
+    <div class="wrap">
+      <div class="section-header reveal">
+        <h2>A few <em>commitments</em> we hold to.</h2>
+      </div>
+
+      <ol class="approach-list reveal stagger-children">
+        <li data-num="01">
+          <h4>Patient capital.</h4>
+          <p>We measure projects in decades, not exits. The right project, well structured, should still be working a generation from now.</p>
+        </li>
+        <li data-num="02">
+          <h4>Local first.</h4>
+          <p>We start with the people already doing the work in a place. Outside capital should accelerate local conviction — not replace it.</p>
+        </li>
+        <li data-num="03">
+          <h4>Honest math.</h4>
+          <p>Pro formas, public benefits, and political costs all on the same page. If the numbers only work with optimism, the project doesn&rsquo;t.</p>
+        </li>
+        <li data-num="04">
+          <h4>Aligned incentives.</h4>
+          <p>Public, private, and philanthropic capital each want different things. Our job is to design deals where everyone can keep their word.</p>
+        </li>
+        <li data-num="05">
+          <h4>Quiet ambition.</h4>
+          <p>The best community work is rarely the loudest. We&rsquo;re happy for the place to be the headline.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- PRINCIPAL -->
+  <section class="principal-section" id="principal">
+    <div class="wrap">
+      <div class="section-header reveal">
+        <h2>Led by <em>Grant Brigham.</em></h2>
+      </div>
+
+      <div class="principal-grid reveal">
+        <div>
+          <div class="principal-photo">
+            <img src="./grant.jpg" alt="Grant Brigham">
+          </div>
+          <div class="principal-photo-cap">
+            <span>Grant Brigham</span>
+            <span>Principal</span>
+          </div>
+        </div>
+
+        <div class="principal-body">
+          <h3>Grant <em>Brigham</em></h3>
+          <div class="principal-role">Principal &middot; Matthews Overton</div>
+
+          <p>
+            Grant leads Matthews Overton, the Birmingham economic development office of Matthews Development. He works at the intersection of real estate, public policy, and community investment — helping the City of Birmingham, county and state partners, institutions, and operators shape projects that hold up financially and stand for something locally.
+          </p>
+          <p>
+            With a background spanning development finance, municipal strategy, and community-based investment, Grant has spent his career translating complex institutional capacity into practical neighborhood progress. He serves on advisory boards for several Birmingham civic initiatives and works directly with foundations, CDFIs, and neighborhood leaders to align capital with community priorities.
+          </p>
+
+          <div class="principal-meta">
+            <div class="meta-item">
+              <div class="k">Email</div>
+              <div class="v"><a href="mailto:gbrigham@matthewsdev.com">gbrigham@matthewsdev.com</a></div>
+            </div>
+            <div class="meta-item">
+              <div class="k">Direct</div>
+              <div class="v"><a href="tel:+12055550100">+1 (205) 555-0100</a></div>
+            </div>
+            <div class="meta-item">
+              <div class="k">Office</div>
+              <div class="v">Birmingham, Alabama</div>
+            </div>
+            <div class="meta-item">
+              <div class="k">Profile</div>
+              <div class="v"><a href="https://www.matthewsdev.com/people/grant-brigham" target="_blank" rel="noopener">matthewsdev.com</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="wrap contact-grid">
+      <div class="contact-label reveal">
+        Connect<br>
+        <span>How can we work together?</span>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="contact-body">
+          Matthews Overton imagines a future where Birmingham is unlocked to achieve its highest potential. The form changes, but the goal does not — in everything we do, we aim to raise the bar for what is possible here. If what we&rsquo;re working on resonates with you, please reach out.
+        </div>
+        <div class="contact-email">
+          <a href="mailto:gbrigham@matthewsdev.com">gbrigham@matthewsdev.com</a>
+        </div>
+        <div class="contact-links stagger-children">
+          <div class="contact-row">
+            <div class="k">Office</div>
+            <div class="v">Birmingham, AL</div>
+          </div>
+          <div class="contact-row">
+            <div class="k">Parent</div>
+            <div class="v"><a href="https://www.matthewsdev.com" target="_blank" rel="noopener">Matthews Development</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-top">
+        <div class="footer-logo">Matthews Overton</div>
+        <nav class="footer-nav">
+          <a href="#top">Home</a>
+          <a href="#practice">Practice</a>
+          <a href="#scale">Scale</a>
+          <a href="#focus">Focus</a>
+          <a href="#approach">Approach</a>
+          <a href="#principal">Principal</a>
+          <a href="#contact">Email Us</a>
+        </nav>
+      </div>
+      <div class="footer-copy">
+        &copy; <span id="yr"></span> Matthews Overton — A practice of Matthews Development &nbsp;|&nbsp; Birmingham, Alabama
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Current year
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    // Nav color transition
+    const nav = document.getElementById('nav');
+    const hero = document.querySelector('.hero');
+
+    function updateNav() {
+      const heroBottom = hero.getBoundingClientRect().bottom;
+      if (heroBottom <= 60) {
+        nav.classList.remove('light');
+        nav.classList.add('dark');
+      } else {
+        nav.classList.remove('dark');
+        nav.classList.add('light');
+      }
+    }
+
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.08,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    document.querySelectorAll('.reveal, .stagger-children').forEach(el => observer.observe(el));
+
+    // Hero parallax on scroll
+    const heroContent = document.querySelector('.hero-content');
+    function heroParallax() {
+      if (!heroContent) return;
+      const scrollY = window.scrollY;
+      const heroHeight = hero.offsetHeight;
+      if (scrollY < heroHeight) {
+        const progress = scrollY / heroHeight;
+        heroContent.style.transform = `translateY(${scrollY * 0.25}px)`;
+        heroContent.style.opacity = 1 - progress * 0.6;
+      }
+    }
+    window.addEventListener('scroll', heroParallax, { passive: true });
+  </script>
+
+</body>
+</html>
